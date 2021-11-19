@@ -1,0 +1,25 @@
+#numbrike{
+    font-size: 50px;
+}
+.ant-layout-content {
+    text-align: center;
+    background-color: white;
+}
+.ant-layout-container {
+    text-align: center;
+    background-color: white;
+}
+.ant-layout{
+    text-align: center;
+    background-color: white;
+}
+
+.ant-layout-content h1{
+    margin-top: 30px;
+    font-size: 50px;
+}
+.ant-table-wrapper {
+
+    margin-left: 40px;
+    margin-right: 40px;
+}

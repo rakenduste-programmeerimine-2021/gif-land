@@ -1,0 +1,29 @@
+header.ant-layout-header{
+    height: 125px;
+    background: white;
+}
+.NavbarL {
+    margin-right: auto;
+    transform: scale(0.9);
+    font-size: 1px;
+  }
+.NavbarR {
+    display: flex;
+    padding: 0px 35px;
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+.Navbar {
+    display: flex;
+    align-items: center;
+}
+
+.NavbarR a{
+    display: flex;
+    margin-left: 25px;
+}
+
+.NavbarR Button{
+    width: 200px;
+    font-size: 15px;
+}
