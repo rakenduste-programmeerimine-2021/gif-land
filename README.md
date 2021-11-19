@@ -31,10 +31,10 @@ Tulevad jooksvalt!
 
 
 ## Pisipildid, logod, animatsioonid jms on võetud järgnevatelt lehtedelt:
-https://www.flaticon.com/
-https://maketext.io/
-https://loading.io/css
-https://favicon.io/
+* https://www.flaticon.com/
+* https://maketext.io/
+* https://loading.io/css
+* https://favicon.io/
 
 
 
