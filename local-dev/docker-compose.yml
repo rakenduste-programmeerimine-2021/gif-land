@@ -11,16 +11,6 @@ services:
     command: 'run start'
     container_name: 'frontend-react'
 
-  picture-backend:
-    build:
-      context: '../picture-backend'
-    ports:
-      - '4000:4000'
-    volumes:
-      - '../picture-backend:/home/node/app:delegated'
-    command: 'node app'
-    container_name: 'picture-backend'
-
   mongo:
     image: mongo:5.0.2
     ports:

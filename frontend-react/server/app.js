@@ -14,20 +14,20 @@ app.use(cors({
   credentials: true 
 })); 
 
-const imageUploadPath = 'C:/Users/Admin/Rakendusteproga/App/frontend-react/image_uploads';
+const imageUploadPath = 'C:/Users/Hansm4543/Rakenduste-programmeerimine-2021/tunnike 17.09/frontend-react/image_uploads';
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, imageUploadPath)
   },
   filename: function(req, file, cb) {
-    cb(null, `${file.fieldname}`+`.jpg`)
+    cb(null, `${file.fieldname}_${file.originalname}`+`.jpg`)
   }
 })
 
 const imageUpload = multer({storage: storage})
 
-app.post('/image-upload', imageUpload.array("Meiefailid"), (req, res) => {
+app.post('/image-upload', imageUpload.array('Pic'), (req, res) => {
   console.log('POST request received to /image-upload.');
   console.log('Axios POST body: ', req.body);
   res.send('POST request recieved on server to /image-upload.');
