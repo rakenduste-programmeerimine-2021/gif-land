@@ -1,9 +1,11 @@
 import LogInForm from "../components/LogInForm";
-import './Register.css';
+import './Login.css';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
+import {UserAddOutlined} from '@ant-design/icons'
+
 
 import { useHistory } from "react-router-dom";
 
@@ -39,17 +41,20 @@ function LogIn(){
 
     return(
         // loon formi teisel js failis kus tekitame sisestusest json objetki
-            <div>
-            <h1>Logi Sisse</h1>
-            <LogInForm onLogInUser={itemSubmitHandler}/>
-            <span id="numbrike"></span>
-            <br></br>
-            <br></br>
-            <br></br>
-            <Link to="/register">
-                <Button type="primary">Registreerimine</Button>
-            </Link>
+        <div class="grid-container">
+            <div class="grid-item1">
+                <h1 id="tervitus">Logi Sisse</h1>
             </div>
+            <LogInForm onLogInUser={itemSubmitHandler}/>
+            <div class="grid-item">
+                <Link to="/register">
+                    <Button type="default" id="loginlehenupp2"><UserAddOutlined/>Register</Button>
+                </Link>
+            </div>
+            <div class="grid-item">
+            <span id="numbrike"></span>
+            </div>
+        </div>
 
     )
 }

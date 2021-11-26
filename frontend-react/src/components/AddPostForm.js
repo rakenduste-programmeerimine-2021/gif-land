@@ -1,4 +1,3 @@
-import {Input, Button, Layout} from 'antd'
 import axios from 'axios';
 import React, { useState } from 'react';
 let kell;
@@ -76,15 +75,6 @@ function AddPostForm(props){
         }catch (error) {
             console.error(error)
             props.onPictureUpload(0);
-        }
-    }
-
-    function isAccepted(data){
-        console.log(data);
-        if(data.hasOwnProperty('error')){
-            props.onPictureUpload(0);
-        }else{
-            props.onPictureUpload(1);
         }
     }
     

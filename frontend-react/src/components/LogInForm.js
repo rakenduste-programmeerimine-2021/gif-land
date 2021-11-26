@@ -1,5 +1,5 @@
-import { Form, Input, Button, Layout } from 'antd'
-import { Link } from 'react-router-dom'
+import { Form, Input, Button } from 'antd'
+import {UserAddOutlined} from '@ant-design/icons'
 
 function LogInForm(props){    
 
@@ -34,8 +34,7 @@ function LogInForm(props){
     };
 
     return(
-        <Layout className="container" type="flex" justify="center" align="middle">
-
+        <div class="grid-item">
         <Form form={form} name="basic" labelCol={{span: 8,}} wrapperCol={{span: 8,}}
         initialValues={{remember: true,}} onFinish={onFinish} onFinishFailed={onFinishFailed}
         autoComplete="off">
@@ -50,13 +49,13 @@ function LogInForm(props){
         <Input.Password />
         </Form.Item>
 
-        <Form.Item wrapperCol={{offset: 8, span: 8,}}>
-        <Button type="primary" htmlType="submit">Log In</Button>
-        </Form.Item>
+        <Form.Item style={{display: "flex", flexDirection: "center", justifyContent:"center" }}>
+          <Button type="default" id="loginlehenupp1" htmlType="submit"><UserAddOutlined/>Login</Button>
+          </Form.Item>
 
         </Form>
 
-        </Layout>
+        </div>
     )
 }
 

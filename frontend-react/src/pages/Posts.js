@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 //import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom';
 import {Button} from 'antd'
 
 import Navbar from "../components/Navbar"
-import {useContext, useRef} from 'react'
+import {useContext} from 'react'
 import {Context} from "../store"
 const cache = {};
 
@@ -17,8 +17,8 @@ const images = Object.entries(cache).map(module => module[1].default);
 
 function Posts(){
 
-    const [state, dispatch] = useContext(Context)
-
+    const [state] = useContext(Context)
+    console.log(state);
     return(
         <div>
             <Navbar/>
