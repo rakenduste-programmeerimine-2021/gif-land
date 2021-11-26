@@ -16,6 +16,15 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 Tuleb jooksvalt!
 </br>
 
+## Rakenduse kuvatõmmised
+![Source code](screenshots/Avaleht.png)
+![Source code](screenshots/Login.png)
+![Source code](screenshots/Register.png)
+![Source code](screenshots/Gif_Upload.png)
+![Source code](screenshots/Posts.png)
+</br>
+
+
 ## Wireframe kuvatõmmised
 ![Source code](wireframes/register.jpg)
 ![Source code](wireframes/login.jpg)
@@ -23,12 +32,6 @@ Tuleb jooksvalt!
 ![Source code](wireframes/profile.jpg)
 ![Source code](wireframes/comments.jpg)
 </br>
-
-## Rakenduse kuvatõmmised
-
-Tulevad jooksvalt!
-
-
 
 ## Pisipildid, logod, animatsioonid jms on võetud järgnevatelt lehtedelt:
 * https://www.flaticon.com/
