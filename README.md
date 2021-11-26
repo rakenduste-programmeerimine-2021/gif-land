@@ -12,8 +12,9 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 </br>
 
 ## Rakenduse funktsionaalne kirjeldus:
-
-Tuleb jooksvalt!
+* Sisse ja välja logimise funktsionaalsus
+* Gif-ide Üleslaadimise funktsionaalsus (Toimib kasutades lisa serverit, mida hetkel veel peab käsitsi käivitama)
+* Gif-ide kuvamise funktsionaalsus
 </br>
 
 ## Rakenduse kuvatõmmised
