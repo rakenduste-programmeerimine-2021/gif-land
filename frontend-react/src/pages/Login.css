@@ -1,0 +1,28 @@
+#loginlehenupp1{
+    background-color: aquamarine;
+    background-size: auto;
+    transform: scale(2);
+}
+#loginlehenupp1:hover{
+    cursor: pointer;
+    color: white;
+    background-color: green;
+    background-size: auto;
+    transform: scale(2);
+}
+#loginlehenupp2{
+    background-color: aquamarine;
+    background-size: auto;
+    transform: scale(1.2);
+}
+#loginlehenupp2:hover{
+    cursor: pointer;
+    color: white;
+    background-color: green;
+    background-size: auto;
+    transform: scale(1.2);
+}
+
+.ant-form label {
+    font-size: 35px;
+}

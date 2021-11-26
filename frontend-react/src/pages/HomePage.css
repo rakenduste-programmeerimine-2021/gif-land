@@ -1,10 +1,13 @@
-#numbrike{
-    font-size: 50px;
+body{
+    background-image: url("green-2696878_1280.jpg");
+    background-repeat: repeat;
+    background-size: cover;
 }
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 10px;
+
 }
   
 .grid-container > div {
@@ -13,39 +16,53 @@
 
 }
   
-.grid-item {
+.grid-item1 {
+    padding-top: 50px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+}
+.grid-item2 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.grid-item3 {
     grid-column-start: 1;
     grid-column-end: 4;
 }
 
-#regalehenupp1{
-    background-color: aquamarine;
-    background-size: auto;
-    transform: scale(2);
-}
-#regalehenupp1:hover{
-    cursor: pointer;
-    color: white;
-    background-color: green;
-    background-size: auto;
-    transform: scale(2);
-}
-#paroolconfirm{
+.grid-item4 {
+    grid-column-start: 1;
+    grid-column-end: 4;
     padding-bottom: 20px;
 }
-#regalehenupp2{
+        
+#tervitus{
+    color: white;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-style: oblique;
+}
+#avalehenupp1{
+    background-color: aquamarine;
+    background-size: auto;
+    transform: scale(2);
+}
+#avalehenupp1:hover{
+    cursor: pointer;
+    color: white;
+    background-color: green;
+    background-size: auto;
+    transform: scale(2);
+}
+#avalehenupp2{
     background-color: aquamarine;
     background-size: auto;
     transform: scale(1.3);
 }
-#regalehenupp2:hover{
+#avalehenupp2:hover{
     cursor: pointer;
     color: white;
     background-color: green;
     background-size: auto;
     transform: scale(1.3);
-}
-
-.ant-form label {
-    font-size: 35px;
 }

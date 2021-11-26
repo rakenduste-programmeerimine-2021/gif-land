@@ -1,4 +1,4 @@
-import './Pages.css'
+//import './Pages.css'
 import {useContext} from 'react'
 import {Context} from "../store"
 import Navbar from "../components/Navbar"
@@ -7,6 +7,8 @@ import AddPostForm from '../components/AddPostForm';
 
 
 function AddPost() {
+  const [state] = useContext(Context)
+  console.log(state);
 
   function itemSubmitHandler(number){
     if(number === 1){

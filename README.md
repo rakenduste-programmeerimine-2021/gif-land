@@ -12,9 +12,19 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 </br>
 
 ## Rakenduse funktsionaalne kirjeldus:
-
-Tuleb jooksvalt!
+* Sisse ja välja logimise funktsionaalsus
+* Gif-ide Üleslaadimise funktsionaalsus (Toimib kasutades lisa serverit, mida hetkel veel peab käsitsi käivitama)
+* Gif-ide kuvamise funktsionaalsus
 </br>
+
+## Rakenduse kuvatõmmised
+![Source code](screenshots/Avaleht.png)
+![Source code](screenshots/Login.png)
+![Source code](screenshots/Register.png)
+![Source code](screenshots/Gif_Upload.png)
+![Source code](screenshots/Posts.png)
+</br>
+
 
 ## Wireframe kuvatõmmised
 ![Source code](wireframes/register.jpg)
@@ -24,17 +34,12 @@ Tuleb jooksvalt!
 ![Source code](wireframes/comments.jpg)
 </br>
 
-## Rakenduse kuvatõmmised
-
-Tulevad jooksvalt!
-
-
-
 ## Pisipildid, logod, animatsioonid jms on võetud järgnevatelt lehtedelt:
 * https://www.flaticon.com/
 * https://maketext.io/
 * https://loading.io/css
 * https://favicon.io/
+* https://pixabay.com/illustrations/green-pattern-background-wallpaper-2696878/
 
 
 

@@ -1,53 +1,44 @@
-import { Form, Input, Button, Layout } from 'antd'
+import { Form, Input, Button } from 'antd'
 import {UserAddOutlined} from '@ant-design/icons'
+import '../pages/Register.css'
 
-function RegisterForm() {
+
+function RegisterForm(props) {
 
   const [form] = Form.useForm()
     const onFinish = (values) => {
 
       if(values.password === values.confirmPassword){
-          console.log('Success:', values)
-          try{
-            fetch('http://localhost:8081/api/auth/signup', {
-                method: 'POST',
-                body: JSON.stringify(values),
-                headers: {'Content-Type':'application/json'}
-                
-            }).then(data => isAccepted(data))
+        console.log('Success:', values)
+        try{
+          fetch('http://localhost:8081/api/auth/signup', {
+              method: 'POST',
+              body: JSON.stringify(values),
+              headers: {'Content-Type':'application/json'}
+              
+          });
 
-          }catch (error) {
-            console.error(error)
-          }
-          form.resetFields()
+        }catch (error) {
+          console.error(error)
+        }
+        form.resetFields();
+        props.onAddUser(1);
 
       } else {
 
-        console.log("The passwords must match!")
-
+        document.getElementById("paroolconfirm").innerHTML = "Please Match the passwords!";
+        form.resetFields();
+        props.onAddUser(0)
       }
     }
 
-    function isAccepted(data) {
-
-      if(data.hasOwnProperty('error')){
-
-        console.log("Error registering!")
-
-      } else {
-
-        console.log("Register succeeded!")
-
-      }
-   }
     const onFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo)
+      console.log('Failed:', errorInfo);
+      props.onAddUser(0);
     }
 
   return (
-
-    <Layout className="container" type="flex" justify="center" align="middle">
-
+    <div class="grid-item">
       <Form form={form} labelCol={{span: 8}} wrapperCol={{span: 8}} initialValues={{remember: true,}}
        labelAlign="center" name="register" onFinish={onFinish} onFailed={onFailed}>
 
@@ -76,13 +67,14 @@ function RegisterForm() {
           message: 'Please re-enter your password!', },]}>
           <Input type="password" placeholder="*********" required></Input>
           </Form.Item>
-          
+          <label id="paroolconfirm"></label>
+          <br></br>
           <Form.Item style={{display: "flex", flexDirection: "center", justifyContent:"center" }}>
-          <Button type="primary" htmlType="submit"><UserAddOutlined/>Register</Button>
+          <Button type="default" id="regalehenupp1" htmlType="submit"><UserAddOutlined/>Register</Button>
           </Form.Item>
         
       </Form>
-    </Layout>
+      </div>
   )
 
 }

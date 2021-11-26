@@ -14,7 +14,9 @@ app.use(cors({
   credentials: true 
 })); 
 
-const imageUploadPath = 'C:/Users/Hansm4543/Rakenduste-programmeerimine-2021/tunnike 17.09/frontend-react/image_uploads';
+//const imageUploadPath = 'C:/Users/Hansm4543/Rakenduste-programmeerimine-2021/tunnike 17.09/frontend-react/image_uploads'; 
+
+const imageUploadPath = 'C:/Users/Admin/Rakendusteproga/App/frontend-react/image_uploads'; //maal
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
