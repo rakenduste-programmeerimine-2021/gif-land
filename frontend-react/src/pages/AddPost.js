@@ -1,4 +1,3 @@
-//import './Pages.css'
 import {useContext} from 'react'
 import {Context} from "../store"
 import Navbar from "../components/Navbar"
@@ -34,3 +33,28 @@ function AddPost() {
 }
 
 export default AddPost
+
+
+
+
+/*import {useContext} from 'react'
+import {Context} from "../store"
+import Navbar from "../components/Navbar"
+import AddPostForm from '../components/AddPostForm';
+import FileUpload from '../components/FileUpload';
+
+function AddPost(){
+  return(
+  <div className="App">
+    <Navbar/>
+    <div className='container mt-4'>
+      <h4 className='display-4 text-center mb-4'>
+        <i className='fab fa-react' /> React File Upload
+      </h4>
+      <FileUpload />
+    </div>
+  </div>
+);
+}
+
+export default AddPost;*/
