@@ -13,8 +13,10 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 
 ## Rakenduse funktsionaalne kirjeldus:
 * Sisse ja välja logimise funktsionaalsus
+* NavBari kaudu saab liikuda erinevate komponentide vahel
 * Gif-ide Üleslaadimise funktsionaalsus (Toimib kasutades lisa serverit, mida hetkel veel peab käsitsi käivitama)
 * Gif-ide kuvamise funktsionaalsus
+* Profiili - leht tulekul
 </br>
 
 ## Rakenduse kuvatõmmised
