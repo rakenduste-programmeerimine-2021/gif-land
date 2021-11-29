@@ -1,6 +1,6 @@
 header.ant-layout-header{
     height: 125px;
-    background: white;
+    background: lightblue;
 }
 .NavbarL {
     margin-right: auto;
@@ -9,7 +9,7 @@ header.ant-layout-header{
   }
 .NavbarR {
     display: flex;
-    padding: 0px 35px;
+    padding: 0px 100px;
     transform: scale(1.1);
     vertical-align: middle;
 }

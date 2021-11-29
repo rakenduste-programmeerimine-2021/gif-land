@@ -2,6 +2,7 @@ import {useContext} from 'react'
 import {Context} from "../store"
 import Navbar from "../components/Navbar"
 import AddPostForm from '../components/AddPostForm';
+import './AddPost.css'
 
 
 
@@ -22,12 +23,18 @@ function AddPost() {
   return (
     <div className="App">
       <Navbar/>
-      <h1>Image Upload</h1>
-
-      <AddPostForm onPictureUpload={itemSubmitHandler}/>
-      <br></br>
-      <span id="numbrike"></span>
-      <br></br>
+      <div className="grid-container">
+        <div className="grid-item1">
+          <h1 id="tervitus">Image Upload</h1>
+        </div>
+        <div className="grid-item1">
+          <AddPostForm onPictureUpload={itemSubmitHandler}/>
+        </div>
+        <br></br>
+        <div className="grid-item1">
+          <span id="numbrike"></span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -42,7 +49,6 @@ import {Context} from "../store"
 import Navbar from "../components/Navbar"
 import AddPostForm from '../components/AddPostForm';
 import FileUpload from '../components/FileUpload';
-
 function AddPost(){
   return(
   <div className="App">
@@ -56,5 +62,4 @@ function AddPost(){
   </div>
 );
 }
-
 export default AddPost;*/
