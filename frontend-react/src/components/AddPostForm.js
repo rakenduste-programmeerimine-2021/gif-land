@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-let kell;
 
+import 'antd/dist/antd.css';
+let kell;
 
 function AddPostForm(props){
 
@@ -10,7 +11,7 @@ function AddPostForm(props){
         try{
             console.log(kell);
             console.log(image);
-            axios.post('http://localhost:4000/image-upload', image)
+            axios.post('http://localhost:5000/image-upload', image)
             .then(res => {
                 console.log('Axios response: ', res)
             }).then(function (response) {
@@ -28,8 +29,12 @@ function AddPostForm(props){
         }
     }
     const handleFileInput = (e) => {
+
+        
       console.log('handleFileInput working!')
       console.log(e.target.files[0]);
+      var b = document.getElementById('fileLabel');
+      b.innerHTML = e.target.files[0].name;
       const formData = new FormData();
       kell = Date.now();
       console.log(kell.toString());
@@ -77,17 +82,23 @@ function AddPostForm(props){
             props.onPictureUpload(0);
         }
     }
-    
+
+
+
+    //<input type="file" id="aa" onChange={handleFileInput}/>
+
 
     return(
         <div>
-            <input type="text" id="Desc_input" placeholder="Description"></input>
+            <textarea id="Desc_input"  rows="2" cols="40" placeholder="Description"/>
+
+            <div className="file-input">
+                <input type="file" id="file" className="file" onChange={handleFileInput}/>
+                <label htmlFor="file">Select file</label>
+            </div>
+            <label id="fileLabel"></label>
             <br></br>
-            <br></br>
-            <button onClick={handleClick}>Upload!</button>
-            <br></br>
-            <input type="file" onChange={handleFileInput}/>
-            <br></br>
+            <button className="uploadButton" onClick={handleClick}>Upload!</button>
         </div>
     )
 }
