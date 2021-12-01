@@ -1,9 +1,10 @@
 import {useState, useContext, useEffect} from "react"
 import {Context} from "../store"
 import {updatePosts} from "../store/actions"
-import {Table, Input, InputNumber, Button, Form, Typography} from 'antd'
+import {Button} from 'antd'
 import {Link} from 'react-router-dom';
 import Navbar from "../components/Navbar"
+import PictureLoader from "../components/PictureLoader"
 
 const postData = []
 let i = 0
@@ -12,7 +13,7 @@ const cache = {};
 function importAll(r) {
     r.keys().forEach((key) => (cache[key] = r(key)));
 }
-importAll(require.context("../../image_uploads", false, /.(png|jpe?g|svg)$/));
+importAll(require.context("../../image_uploads", false, /.(png|jpe?g|svg|gif)$/));
 
 const images = Object.entries(cache).map(module => module[1].default);
 
@@ -53,118 +54,13 @@ const [isLoading, setIsLoading] = useState(true)
     
     },[isLoading])
 
-
     if(isLoading === true){
         return(
         <div>
             Loading...
-        </div>);
+        </div>)
     }
-    
-    const EditableCell = ({
-
-        editing,
-        dataIndex,
-        filename,
-        inputType,
-        record,
-        index,
-        children,
-        ...restProps
-
-    }) => {
-
-    const inputNode = inputType === 'number' ? <InputNumber/> : <Input/>
-
-        return (
-
-            <td {...restProps}>
-            {editing ? (
-                <Form.Item name={dataIndex} style={{margin: 0,}} 
-                rules={[{required: true,
-                message: `Please Input ${filename}!`,},]}>
-                {inputNode}
-                </Form.Item>
-            ) : (children)}
-            </td>
-        )
-    }
-    
-    const EditPosts = () => {
-
-        const [form] = Form.useForm()
-        const [dataforTable, setData] = useState(postData)
-        
-        
-            const columns = [
-
-            {
-            title: 'file',
-            dataIndex: 'file',
-            width: '15%',
-            editable: false,
-            },
-            {
-            title: 'Text',
-            dataIndex: 'text',
-            width: '20%',
-            editable: true,
-            },
-            {
-            title: 'Firstname',
-            dataIndex: 'firstName',
-            width: '10%',
-            editable: true,
-            },
-            {
-            title: 'Lastname',
-            dataIndex: 'lastName',
-            width: '10%',
-            editable: true,
-            },
-            {
-            title: 'Date',
-            dataIndex: 'createdAt',
-            width: '15%',
-            editable: false,
-            },
-
-        ]
-
-        const mergedColumns = columns.map((col) => {
-            if (!col.editable) {
-            return col
-            }
-        
-            return {
-
-                ...col,
-                onCell: (record) => ({
-                    record,
-                    inputType: col.dataIndex === 'age' ? 'number' : 'text',
-                    dataIndex: col.dataIndex,
-                    title: col.title,
-                }),
-            }
-        })
-
-        return (
-
-            <Form form={form} component={false}>
-
-                <Table components={{
-                    body: {cell: EditableCell,},}}
-                    bordered
-                    dataSource={dataforTable}
-                    columns={mergedColumns}
-                    rowClassName="editable-row"
-                    pagination={{
-                }}/>
-            </Form>
-        )
-        
-    }
-    
+   
     return(
         <div>
             <Navbar/>
@@ -172,7 +68,8 @@ const [isLoading, setIsLoading] = useState(true)
                 <Button type="primary">Piltide laadimine</Button>
             </Link>
             <h1>New Gifs Feed</h1>
-            <EditPosts/>
+            <br />
+            <PictureLoader />
         </div>
     )
 }

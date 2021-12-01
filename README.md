@@ -15,7 +15,7 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 * Sisse ja välja logimise funktsionaalsus
 * NavBari kaudu saab liikuda erinevate komponentide vahel
 * Gif-ide Üleslaadimise funktsionaalsus (Toimib kasutades lisa serverit, mida hetkel veel peab käsitsi käivitama)
-* Gif-ide kuvamise funktsionaalsus
+* Gif-ide kuvamise funktsionaalsus(responsive disain)
 * Profiili - leht tulekul
 </br>
 
@@ -24,7 +24,7 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 ![Source code](screenshots/Login.png)
 ![Source code](screenshots/Register.png)
 ![Source code](screenshots/Gif_Upload.png)
-![Source code](screenshots/Posts.png)
+![Source code](screenshots/Postitused.png)
 </br>
 
 

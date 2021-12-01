@@ -5,12 +5,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
 import {UserAddOutlined} from '@ant-design/icons'
-
-
 import { useHistory } from "react-router-dom";
-
-
-
 import {useContext} from 'react';
 import {Context} from "../store";
 import { loginUser } from "../store/actions";
@@ -32,7 +27,6 @@ function LogIn(){
             document.getElementById("numbrike").innerHTML = "Õnnestus";
             dispatch(loginUser(data));
             handler();
-            //window.location.href = "http://localhost:3000/posts";
         }else{
             document.getElementById("numbrike").innerHTML = "Failed";
         }
@@ -40,7 +34,7 @@ function LogIn(){
     }
 
     return(
-        // loon formi teisel js failis kus tekitame sisestusest json objetki
+       
         <div class="grid-container">
             <div class="grid-item1">
                 <h1 id="tervitus">Logi Sisse</h1>
@@ -59,4 +53,4 @@ function LogIn(){
     )
 }
 
-export default LogIn;
+export default LogIn
