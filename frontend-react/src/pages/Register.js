@@ -21,17 +21,17 @@ function Register(){
 
     return(
 
-        <div class="grid-container">
-            <div class="grid-item1">
+        <div className="grid-container">
+            <div className="grid-item1">
                 <h1 id="tervitus">Register Form</h1>
             </div>
             <RegisterForm onAddUser={itemSubmitHandler}/>
-            <div class="grid-item">
+            <div className="grid-item">
                 <Link to="/login">
                     <Button type="default" id="regalehenupp2"><UserAddOutlined/>Login</Button>
                 </Link>
             </div>
-            <div class="grid-item">
+            <div className="grid-item">
                 <span id="numbrike"></span>
             </div>
         </div>
