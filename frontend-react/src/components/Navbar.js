@@ -32,9 +32,7 @@ function Navbar (){
                 </Link>
                 </div>
                 <div className="NavbarR">
-                <Link to="/login">
-                    <Button type="primary">Log In</Button>
-                </Link>
+    
                 </div>
             </div>
         );

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-
 import 'antd/dist/antd.css';
 let kell;
 
@@ -11,7 +10,7 @@ function AddPostForm(props){
         try{
             console.log(kell);
             console.log(image);
-            axios.post('http://localhost:5000/image-upload', image)
+            axios.post('http://localhost:4000/image-upload', image)
             .then(res => {
                 console.log('Axios response: ', res)
             }).then(function (response) {
@@ -38,12 +37,10 @@ function AddPostForm(props){
       const formData = new FormData();
       kell = Date.now();
       console.log(kell.toString());
-      //kirjutan MONGOSSE PILDI KIRJELDUSED ja siis saadan failile ID vastavalt kuup2evale
       formData.append('Pic', e.target.files[0], kell.toString());
       console.log(formData);
       setImage(formData);
     }
-
 
     function TryToUpload(){
         console.log(document.getElementById("Desc_input").value);
@@ -76,17 +73,11 @@ function AddPostForm(props){
             
             props.onPictureUpload(1);
 
-
         }catch (error) {
             console.error(error)
             props.onPictureUpload(0);
         }
     }
-
-
-
-    //<input type="file" id="aa" onChange={handleFileInput}/>
-
 
     return(
         <div>

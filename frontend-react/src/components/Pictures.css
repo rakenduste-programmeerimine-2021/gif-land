@@ -1,0 +1,15 @@
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  .post-grid > div {
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 15px;
+    border-radius: 10px;
+  }
