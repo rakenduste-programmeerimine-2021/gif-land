@@ -3,12 +3,23 @@ import {Context} from "../store"
 import Navbar from "../components/Navbar"
 import AddPostForm from '../components/AddPostForm';
 import './AddPost.css'
+import { useHistory } from "react-router-dom";
 
 
 
 function AddPost() {
   const [state] = useContext(Context)
   console.log(state);
+
+  const history = useHistory()
+  const handler = () => {
+    //Redirect to another route
+    history.push("/posts") 
+  }
+  
+  if (!state.auth.token) {
+    handler();
+  }
 
   function itemSubmitHandler(number){
     if(number === 1){

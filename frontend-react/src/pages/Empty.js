@@ -1,10 +1,20 @@
 import {useContext} from 'react';
 import {Context} from "../store";
 import Navbar from "../components/Navbar"
+import { useHistory } from "react-router-dom";
 
-function ProfilePage(){
+function Empty(){
 
     const [state, dispatch] = useContext(Context)
+    const history = useHistory()
+    const handler = () => {
+      //Redirect to another route
+      history.push("/posts") 
+    }
+    
+    if (!state.auth.token) {
+      handler();
+    }
 
     return(
         // loon formi teisel js failis kus tekitame sisestusest json objetki
@@ -18,4 +28,4 @@ function ProfilePage(){
     )
 }
 
-export default ProfilePage;
+export default Empty;
