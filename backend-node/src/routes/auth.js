@@ -18,6 +18,18 @@ router.post(
   validationMiddleware,
   authController.login
 );
+router.post(
+  "/registerEmailCheck",
+  [
+    check("email")
+      .isEmail()
+      .normalizeEmail()
+      .escape()
+      .withMessage("Must be correctly formatted e-mail"),
+  ],
+  validationMiddleware,
+  authController.registerEmailCheck
+);
 //escape kaotab 2ra koik debiilsed symbolid nimedest ja emailidest kuna nimed ja emailid peavad olema korrektses formaadis
 router.post(
   "/signup",
