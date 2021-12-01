@@ -1,17 +1,31 @@
 import {useContext} from 'react';
 import {Context} from "../store";
-function ProfilePage(){
+import Navbar from "../components/Navbar"
+import { useHistory } from "react-router-dom";
+
+function Empty(){
 
     const [state, dispatch] = useContext(Context)
+    const history = useHistory()
+    const handler = () => {
+      //Redirect to another route
+      history.push("/posts") 
+    }
+    
+    if (!state.auth.token) {
+      handler();
+    }
 
     return(
         // loon formi teisel js failis kus tekitame sisestusest json objetki
-        <div class="grid-container">
+        <div>
+            <Navbar/>
+            <div class="grid-container">
 
-            <h1 id="tervitus">Something went wrong</h1>
+                <h1 id="tervitus">Something went wrong</h1>
+            </div>
         </div>
-
     )
 }
 
-export default ProfilePage;
+export default Empty;
