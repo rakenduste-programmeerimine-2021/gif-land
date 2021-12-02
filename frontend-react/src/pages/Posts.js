@@ -1,8 +1,6 @@
 import {useState, useContext, useEffect} from "react"
 import {Context} from "../store"
 import {updatePosts} from "../store/actions"
-import {Button} from 'antd'
-import {Link} from 'react-router-dom';
 import Navbar from "../components/Navbar"
 import PictureLoader from "../components/PictureLoader"
 
@@ -57,6 +55,8 @@ const [isLoading, setIsLoading] = useState(true)
     if(isLoading === true){
         return(
         <div>
+            <Navbar/>
+
             Loading...
         </div>)
     }
@@ -64,9 +64,6 @@ const [isLoading, setIsLoading] = useState(true)
     return(
         <div>
             <Navbar/>
-            <Link to="/addPost">
-                <Button type="primary">Piltide laadimine</Button>
-            </Link>
             <h1>New Gifs Feed</h1>
             <br />
             <PictureLoader />
