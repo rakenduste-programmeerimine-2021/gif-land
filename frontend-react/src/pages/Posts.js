@@ -36,7 +36,7 @@ const [isLoading, setIsLoading] = useState(true)
 
                 postData.push({
                   key: data[i]._id,
-                  file: imageLoad,
+                  file: imageLoad[i],
                   text: data[i].text,
                   firstName: data[i].firstName,
                   lastName: data[i].lastName,

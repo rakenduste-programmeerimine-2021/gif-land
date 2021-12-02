@@ -18,7 +18,7 @@ let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ))
 
-function ProfilePictureLoader(){
+function PictureLoader(){
 
     const [state, dispatch] = useContext(Context)
     const [isLoading, setIsLoading] = useState(true)
@@ -33,15 +33,14 @@ function ProfilePictureLoader(){
                 for (i; i < data.length; i++) {
                     if(state.auth.firstName===data[i].firstName){
                         postData.push({
-                        id: data[i]._id,
-                        image: imageLoad[i],
-                        text: data[i].text,
-                        firstName: data[i].firstName,
-                        lastName: data[i].lastName,
-                        createdAt: data[i].createdAt,
+                            id: data[i]._id,
+                            image: imageLoad[i],
+                            text: data[i].text,
+                            firstName: data[i].firstName,
+                            lastName: data[i].lastName,
+                            createdAt: data[i].createdAt,
                         })
                     }
-    
                 }
                 
                 dispatch(updatePosts(data))
@@ -74,4 +73,4 @@ function ProfilePictureLoader(){
         )
     }
     
-    export default ProfilePictureLoader;
+    export default PictureLoader;

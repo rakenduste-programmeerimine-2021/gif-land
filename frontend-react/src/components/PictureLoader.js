@@ -31,14 +31,13 @@ function PictureLoader(){
             }).then(data => {
     
                 for (i; i < data.length; i++) {
-    
                     postData.push({
-                      id: data[i]._id,
-                      image: imageLoad[i],
-                      text: data[i].text,
-                      firstName: data[i].firstName,
-                      lastName: data[i].lastName,
-                      createdAt: data[i].createdAt,
+                    id: data[i]._id,
+                    image: imageLoad[i],
+                    text: data[i].text,
+                    firstName: data[i].firstName,
+                    lastName: data[i].lastName,
+                    createdAt: data[i].createdAt,
                     })
     
                 }

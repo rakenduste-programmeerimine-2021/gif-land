@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 function Empty(){
 
 
-    const [state] = useContext(Context)
+    const [state, dispatch] = useContext(Context)
 
     const history = useHistory()
     const handler = () => {
