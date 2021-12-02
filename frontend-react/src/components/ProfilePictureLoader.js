@@ -18,7 +18,7 @@ let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ))
 
-function PictureLoader(){
+function ProfilePictureLoader(){
 
     const [state, dispatch] = useContext(Context)
     const [isLoading, setIsLoading] = useState(true)
@@ -73,4 +73,4 @@ function PictureLoader(){
         )
     }
     
-    export default PictureLoader;
+    export default ProfilePictureLoader;
