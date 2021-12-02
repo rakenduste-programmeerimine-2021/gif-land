@@ -3,7 +3,7 @@ import {Context} from "../store"
 import {updatePosts} from "../store/actions"
 import './Pictures.css'
   
-const postData = []
+let postData = []
 let i = 0
 const cache = {};
 
@@ -23,31 +23,33 @@ function PictureLoader(){
     const [state, dispatch] = useContext(Context)
     const [isLoading, setIsLoading] = useState(true)
     
-        useEffect(() =>{
-            fetch('http://localhost:8081/api/post/').then(res => {
-    
-                return res.json()
-    
-            }).then(data => {
-    
-                for (i; i < data.length; i++) {
-                    postData.push({
-                    id: data[i]._id,
-                    image: imageLoad[i],
-                    text: data[i].text,
-                    firstName: data[i].firstName,
-                    lastName: data[i].lastName,
-                    createdAt: data[i].createdAt,
-                    })
-    
-                }
-                
-                dispatch(updatePosts(data))
-                setIsLoading(false)
+    useEffect(() =>{
+        postData = []
+        fetch('http://localhost:8081/api/post/').then(res => {
+
+            return res.json()
+
+        }).then(data => {
+            let m =data.length - 1
             
-            })
+            for (m; 0 <= m; m--) {
+                postData.push({
+                    id: data[m]._id,
+                    image: imageLoad[m],
+                    text: data[m].text,
+                    firstName: data[m].firstName,
+                    lastName: data[m].lastName,
+                    createdAt: data[m].createdAt,
+                })
+            
+            }
+            
+            dispatch(updatePosts(data))
+            setIsLoading(false)
         
-        },[isLoading])
+        })
+    
+    },[isLoading])
     
         if(isLoading === true){
             return(

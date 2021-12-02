@@ -3,7 +3,7 @@ import {Context} from "../store"
 import {updatePosts} from "../store/actions"
 import './Pictures.css'
   
-const postData = []
+let postData = []
 let i = 0
 const cache = {};
 
@@ -24,21 +24,23 @@ function ProfilePictureLoader(){
     const [isLoading, setIsLoading] = useState(true)
     
         useEffect(() =>{
+            postData = []
             fetch('http://localhost:8081/api/post/').then(res => {
     
                 return res.json()
     
             }).then(data => {
-    
-                for (i; i < data.length; i++) {
-                    if(state.auth.firstName===data[i].firstName){
+                let m =data.length - 1
+                
+                for (m; 0 <= m; m--) {
+                    if(state.auth.firstName===data[m].firstName){
                         postData.push({
-                            id: data[i]._id,
-                            image: imageLoad[i],
-                            text: data[i].text,
-                            firstName: data[i].firstName,
-                            lastName: data[i].lastName,
-                            createdAt: data[i].createdAt,
+                            id: data[m]._id,
+                            image: imageLoad[m],
+                            text: data[m].text,
+                            firstName: data[m].firstName,
+                            lastName: data[m].lastName,
+                            createdAt: data[m].createdAt,
                         })
                     }
                 }

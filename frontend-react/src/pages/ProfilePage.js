@@ -5,7 +5,7 @@ import {updatePosts} from "../store/actions"
 import Navbar from "../components/Navbar"
 import ProfilePictureLoader from "../components/ProfilePictureLoader"
 
-const postData = []
+let postData = []
 let i = 0
 const cache = {};
 
@@ -35,24 +35,27 @@ function ProfilePage(){
     }
   
     useEffect(() =>{
+         postData = []
         fetch('http://localhost:8081/api/post/').then(res => {
 
             return res.json()
 
         }).then( data => {
 
-
-            for (i; i < data.length; i++) {
-
-                postData.push({
-                  key: data[i]._id,
-                  file: imageLoad[i],
-                  text: data[i].text,
-                  firstName: data[i].firstName,
-                  lastName: data[i].lastName,
-                  createdAt: data[i].createdAt,
-                })
-
+            let m = data.length -1
+            
+            for (m; 0 <= m; m--) {
+                console.log(m)
+                if(state.auth.firstName===data[m].firstName){
+                    postData.push({
+                        id: data[m]._id,
+                        image: imageLoad[m],
+                        text: data[m].text,
+                        firstName: data[m].firstName,
+                        lastName: data[m].lastName,
+                        createdAt: data[m].createdAt,
+                    })
+                }
             }
             
             dispatch(updatePosts(data))
