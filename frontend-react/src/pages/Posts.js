@@ -1,12 +1,10 @@
 import {useState, useContext, useEffect} from "react"
 import {Context} from "../store"
 import {updatePosts} from "../store/actions"
-import {Button} from 'antd'
-import {Link} from 'react-router-dom';
 import Navbar from "../components/Navbar"
 import PictureLoader from "../components/PictureLoader"
 
-const postData = []
+let postData = []
 let i = 0
 const cache = {};
 
@@ -27,36 +25,41 @@ const [isLoading, setIsLoading] = useState(true)
 
   
     useEffect(() =>{
-        fetch('http://localhost:8081/api/post/').then(res => {
+        postData = []
+    fetch('http://localhost:8081/api/post/').then(res => {
 
-            return res.json()
+        return res.json()
 
-        }).then( data => {
+    }).then( data => {
 
-
-            for (i; i < data.length; i++) {
-
-                postData.push({
-                  key: data[i]._id,
-                  file: imageLoad,
-                  text: data[i].text,
-                  firstName: data[i].firstName,
-                  lastName: data[i].lastName,
-                  createdAt: data[i].createdAt,
-                })
-
-            }
-            
-            dispatch(updatePosts(data))
-            setIsLoading(false)
+        let m = data.length -1
         
-        })
+        for (m; 0 <= m; m--) {
+            console.log(m)
+            if(state.auth.firstName===data[m].firstName){
+                postData.push({
+                    id: data[m]._id,
+                    image: imageLoad[m],
+                    text: data[m].text,
+                    firstName: data[m].firstName,
+                    lastName: data[m].lastName,
+                    createdAt: data[m].createdAt,
+                })
+            }
+        }
+        
+        dispatch(updatePosts(data))
+        setIsLoading(false)
     
+    })
+
     },[isLoading])
 
     if(isLoading === true){
         return(
         <div>
+            <Navbar/>
+
             Loading...
         </div>)
     }
@@ -64,9 +67,6 @@ const [isLoading, setIsLoading] = useState(true)
     return(
         <div>
             <Navbar/>
-            <Link to="/addPost">
-                <Button type="primary">Piltide laadimine</Button>
-            </Link>
             <h1>New Gifs Feed</h1>
             <br />
             <PictureLoader />

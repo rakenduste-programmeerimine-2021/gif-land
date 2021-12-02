@@ -62,3 +62,20 @@ exports.signup = async (req, res) => {
     res.status(400).json({ error: e.message })
   }
 }
+
+exports.registerEmailCheck = async (req, res) => {
+  const { email } = req.body
+
+  try {
+    const user = await User.findOne({ email })
+
+    if (user) throw Error("User with this e-mail does already exist")
+
+    res.status(200).json({
+      email
+    })
+
+  } catch (e){
+    res.status(400).json({ error: e.message })
+  }
+}

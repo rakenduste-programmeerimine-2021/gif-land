@@ -18,38 +18,39 @@ let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ))
 
-function PictureLoader(){
+function ProfilePictureLoader(){
 
     const [state, dispatch] = useContext(Context)
     const [isLoading, setIsLoading] = useState(true)
     
-    useEffect(() =>{
-        postData = []
-        fetch('http://localhost:8081/api/post/').then(res => {
-
-            return res.json()
-
-        }).then(data => {
-            let m =data.length - 1
-            
-            for (m; 0 <= m; m--) {
-                postData.push({
-                    id: data[m]._id,
-                    image: imageLoad[m],
-                    text: data[m].text,
-                    firstName: data[m].firstName,
-                    lastName: data[m].lastName,
-                    createdAt: data[m].createdAt,
-                })
-            
-            }
-            
-            dispatch(updatePosts(data))
-            setIsLoading(false)
-        
-        })
+        useEffect(() =>{
+            postData = []
+            fetch('http://localhost:8081/api/post/').then(res => {
     
-    },[isLoading])
+                return res.json()
+    
+            }).then(data => {
+                let m =data.length - 1
+                
+                for (m; 0 <= m; m--) {
+                    if(state.auth.firstName===data[m].firstName){
+                        postData.push({
+                            id: data[m]._id,
+                            image: imageLoad[m],
+                            text: data[m].text,
+                            firstName: data[m].firstName,
+                            lastName: data[m].lastName,
+                            createdAt: data[m].createdAt,
+                        })
+                    }
+                }
+                
+                dispatch(updatePosts(data))
+                setIsLoading(false)
+            
+            })
+        
+        },[isLoading])
     
         if(isLoading === true){
             return(
@@ -74,4 +75,4 @@ function PictureLoader(){
         )
     }
     
-    export default PictureLoader;
+    export default ProfilePictureLoader;

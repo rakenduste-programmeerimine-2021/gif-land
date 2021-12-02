@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
+import {useContext} from 'react';
+import {Context} from "../store";
 let kell;
 
 function AddPostForm(props){
+    const [state] = useContext(Context)
 
     const [image, setImage] = useState(null);
     const handleClick = () => {
@@ -48,16 +51,30 @@ function AddPostForm(props){
         if(descpritiontext.length < 1){
             props.onPictureUpload(0);
         }else{
-            let firstNameVariable = "Jan";
-            let lastNameVariable = "Laan";
-            let filenameVariable = 'Pic_' + kell.toString();
-            const Post= {
-                filename: filenameVariable,
-                text: descpritiontext,
-                firstName: firstNameVariable,
-                lastName: lastNameVariable
-            };
-            onFinish(Post);
+            if (state.auth.token) {
+                let firstNameVariable = state.auth.firstName;
+                let lastNameVariable = state.auth.lastName;
+                let filenameVariable = 'Pic_' + kell.toString();
+                const Post1= {
+                    filename: filenameVariable,
+                    text: descpritiontext,
+                    firstName: firstNameVariable,
+                    lastName: lastNameVariable
+                };
+                onFinish(Post1);
+            }else{
+                let firstNameVariable = "Jan";
+                let lastNameVariable = "Laan";
+                let filenameVariable = 'Pic_' + kell.toString();
+                const Post2= {
+                    filename: filenameVariable,
+                    text: descpritiontext,
+                    firstName: firstNameVariable,
+                    lastName: lastNameVariable
+                };
+                onFinish(Post2);
+            }
+            //onFinish(Post);
         }
         
     }
