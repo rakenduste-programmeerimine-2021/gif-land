@@ -14,6 +14,9 @@
     font-weight: bold;
     cursor: pointer;
 }
+.file-input label:hover {
+    background: #0A4800;
+}
 .uploadButton{
     font-size: 70%;
     background: #0e6600;
@@ -22,4 +25,7 @@
     font-weight: bold;
     cursor: pointer;
     border: none;
+}
+.uploadButton:hover{
+    background: #0A4800;
 }

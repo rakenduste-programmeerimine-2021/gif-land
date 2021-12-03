@@ -21,8 +21,8 @@ function Posts(){
     return(
         <div>
             <Navbar/>
-            <h1>New Gifs Feed</h1>
-            <br />
+            <h1 id="tervitus">New Gifs Feed</h1>
+            <br/>
             <PictureLoader />
         </div>
     )
