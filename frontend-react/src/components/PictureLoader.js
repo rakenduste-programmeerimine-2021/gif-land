@@ -34,11 +34,12 @@ function PictureLoader(){
             
             for (m; 0 <= m; m--) {
                 postData.push({
-                    id: data[m]._id,
+                    key: data[m]._id,
                     image: imageLoad[m],
                     text: data[m].text,
                     firstName: data[m].firstName,
                     lastName: data[m].lastName,
+                    likeAmount: data[m].likeAmount,
                     createdAt: data[m].createdAt,
                 })
             
@@ -50,6 +51,27 @@ function PictureLoader(){
         })
     
     },[isLoading])
+
+    function itemEditHandler(ID, Likes){
+        //console.log(ID);
+        //console.log(Likes);
+
+        let liida = Likes+1
+        const itemSubmitted={
+            id: ID,
+            likeAmount: liida
+
+        }
+        //console.log(itemSubmitted);
+        fetch('http://localhost:8081/api/post/update/' + ID.toString(), {
+            method: 'PUT',
+            body: JSON.stringify(itemSubmitted),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        });
+        setIsLoading(true)
+    }
     
         if(isLoading === true){
             return(
@@ -62,12 +84,14 @@ function PictureLoader(){
             <div className="post-grid">
             {
             postData.map((post) => 
-            <div className={post.id}>
+            <div className={post.key}>
             <p>
             {post.image}<br/><br/>
             <b>User:</b> {post.firstName +" "+ post.lastName}<br/>
             <b>Description:</b> {post.text}<br/>
-            <b>Posted at:</b> {post.createdAt}</p>
+            <b>Posted at:</b> {post.createdAt}<br/>
+            <b>Upvote amount:</b> {post.likeAmount}</p>
+            <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
             </div>)
             } 
             </div>

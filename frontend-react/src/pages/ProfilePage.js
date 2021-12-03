@@ -48,7 +48,7 @@ function ProfilePage(){
                 console.log(m)
                 if(state.auth.firstName===data[m].firstName){
                     postData.push({
-                        id: data[m]._id,
+                        key: data[m]._id,
                         image: imageLoad[m],
                         text: data[m].text,
                         firstName: data[m].firstName,
