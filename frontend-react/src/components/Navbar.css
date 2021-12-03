@@ -7,6 +7,9 @@ header.ant-layout-header{
     transform: scale(0.9);
     font-size: 1px;
   }
+  .NavbarL:hover {
+    opacity: 0.7;
+  }
 .NavbarR {
     display: flex;
     padding: 0px 100px;

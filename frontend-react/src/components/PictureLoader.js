@@ -3,7 +3,9 @@ import {Context} from "../store"
 import {updatePosts} from "../store/actions"
 import './Pictures.css'
 import { useHistory } from "react-router-dom";
-
+import { LikeOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
+import { UserOutlined, ExpandOutlined } from '@ant-design/icons'
   
 let postData = []
 let i = 0
@@ -111,13 +113,13 @@ function PictureLoader(){
             <b>Description:</b> {post.text}<br/>
             <b>Posted at:</b> {post.createdAt}<br/>
             <b>Upvote amount:</b> {post.likeAmount}</p>
-            <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
+            <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add UpVote</Button>
             <br/>
             <br/>
-            <button onClick={()=>toProfileHandler(post.firstName, post.lastName)}>To ProfilePage</button>
+            <Button type="default" onClick={()=>toProfileHandler(post.firstName, post.lastName)}><UserOutlined/>To profilepage of {post.firstName +" "+ post.lastName}</Button>
             <br/>
             <br/>
-            <button onClick={()=>toPostDetailedHandler(post.key)}>To PostDetailedView</button>
+            <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>To Detailed view</Button>
             </div>)
             } 
             </div>

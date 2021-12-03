@@ -2,10 +2,8 @@ import {useState, useContext, useEffect} from "react"
 import {Context} from "../store"
 import {updatePosts} from "../store/actions"
 import './Pictures.css'
-import { Form, Input, Button } from 'antd'
-import { Link } from 'react-router-dom';
-
-  
+import { Button } from 'antd'
+import { LikeOutlined } from '@ant-design/icons'  
 let postData = []
 let i = 0
 const cache = {};
@@ -95,7 +93,7 @@ function ProfilePictureLoader(){
                     <b>Description:</b> {post.text}<br/>
                     <b>Posted at:</b> {post.createdAt}<br/>
                     <b>Upvote amount:</b> {post.likeAmount}</p>
-                    <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
+                    <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
                 </div>)
 
                 }

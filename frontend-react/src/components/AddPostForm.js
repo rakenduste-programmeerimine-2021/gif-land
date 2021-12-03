@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import {useContext} from 'react';
 import {Context} from "../store";
+import { FileAddOutlined, UploadOutlined } from '@ant-design/icons'  
 let kell;
 
 function AddPostForm(props){
@@ -103,11 +104,11 @@ function AddPostForm(props){
             <div className="file-input">
                 <input type="file" id="file" className="file" onChange={handleFileInput}/>
                 <br/>
-                <label htmlFor="file">Select file</label>
+                <label htmlFor="file"><FileAddOutlined/> Select file</label>
             </div>
             <label id="fileLabel"></label>
             <br/>
-            <button className="uploadButton" onClick={handleClick}>Upload!</button>
+            <button className="uploadButton" onClick={handleClick}><UploadOutlined /> Upload</button>
         </div>
     )
 }
