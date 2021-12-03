@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
-
 import {useContext} from 'react';
 import {Context} from "../store";
 import { logoutUser} from "../store/actions";
@@ -48,15 +47,14 @@ function Navbar (){
                 </Link>
                 </div>
                 <div className="NavbarR">
-
                 <Link to="/addPost">
-                    <Button type="primary">Upload Post</Button>
+                    <Button type="primary">Upload post</Button>
                 </Link>
                 <Link to="/profilepage">
-                    <Button type="primary">ProfilePage</Button>
+                    <Button type="primary">Profile page</Button>
                 </Link>
                 <Link to="/" onClick={() => myFunction(1)}>
-                    <Button type="primary">Log Out</Button>
+                    <Button type="primary">Log out</Button>
                 </Link>
                 </div>
             </div>

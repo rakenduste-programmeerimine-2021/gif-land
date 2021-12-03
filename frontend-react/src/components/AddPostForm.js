@@ -3,15 +3,14 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import {useContext} from 'react';
 import {Context} from "../store";
-let kell;
+let currentTime;
 
 function AddPostForm(props){
     const [state] = useContext(Context)
-
     const [image, setImage] = useState(null);
     const handleClick = () => {
         try{
-            console.log(kell);
+            console.log(currentTime);
             console.log(image);
             axios.post('http://localhost:4000/image-upload', image)
             .then(res => {
@@ -32,17 +31,17 @@ function AddPostForm(props){
     }
     const handleFileInput = (e) => {
 
-        
       console.log('handleFileInput working!')
       console.log(e.target.files[0]);
       var b = document.getElementById('fileLabel');
       b.innerHTML = e.target.files[0].name;
       const formData = new FormData();
-      kell = Date.now();
-      console.log(kell.toString());
-      formData.append('Pic', e.target.files[0], kell.toString());
+      currentTime = Date.now();
+      console.log(currentTime.toString());
+      formData.append('Pic', e.target.files[0], currentTime.toString());
       console.log(formData);
       setImage(formData);
+
     }
 
     function TryToUpload(){
@@ -50,31 +49,33 @@ function AddPostForm(props){
         let descpritiontext = document.getElementById("Desc_input").value;
         if(descpritiontext.length < 1){
             props.onPictureUpload(0);
+
         }else{
             if (state.auth.token) {
                 let firstNameVariable = state.auth.firstName;
                 let lastNameVariable = state.auth.lastName;
-                let filenameVariable = 'Pic_' + kell.toString();
+                let filenameVariable = 'Pic_' + currentTime.toString();
                 const Post1= {
                     filename: filenameVariable,
                     text: descpritiontext,
                     firstName: firstNameVariable,
                     lastName: lastNameVariable
-                };
+                }
                 onFinish(Post1);
+
             }else{
                 let firstNameVariable = "Jan";
                 let lastNameVariable = "Laan";
-                let filenameVariable = 'Pic_' + kell.toString();
+                let filenameVariable = 'Pic_' + currentTime.toString();
                 const Post2= {
                     filename: filenameVariable,
                     text: descpritiontext,
                     firstName: firstNameVariable,
                     lastName: lastNameVariable
-                };
+                }
                 onFinish(Post2);
             }
-            //onFinish(Post);
+
         }
         
     }
@@ -87,9 +88,7 @@ function AddPostForm(props){
                 body: JSON.stringify(values),
                 headers: {'Content-Type':'application/json'}
             }).then(response => response.json())
-            
             props.onPictureUpload(1);
-
         }catch (error) {
             console.error(error)
             props.onPictureUpload(0);
@@ -99,13 +98,13 @@ function AddPostForm(props){
     return(
         <div>
             <textarea id="Desc_input"  rows="2" cols="40" placeholder="Description"/>
-
             <div className="file-input">
                 <input type="file" id="file" className="file" onChange={handleFileInput}/>
+                <br/>
                 <label htmlFor="file">Select file</label>
             </div>
             <label id="fileLabel"></label>
-            <br></br>
+            <br/>
             <button className="uploadButton" onClick={handleClick}>Upload!</button>
         </div>
     )
