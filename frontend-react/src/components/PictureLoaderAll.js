@@ -1,8 +1,10 @@
-import {useState, useContext, useEffect} from "react"
-import {Context} from "../store"
-import {updatePosts} from "../store/actions"
+import { useState, useContext, useEffect } from "react"
+import { Context } from "../store"
+import { updatePosts } from "../store/actions"
 import './Pictures.css'
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
+import { LikeOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
 
   
 let postData = []
@@ -93,7 +95,7 @@ function PictureLoaderAll(){
             <b>Description:</b> {post.text}<br/>
             <b>Posted at:</b> {post.createdAt}<br/>
             <b>Upvote amount:</b> {post.likeAmount}</p>
-            <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
+            <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
             </div>)
             } 
             </div>
