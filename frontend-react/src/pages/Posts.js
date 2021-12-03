@@ -1,67 +1,21 @@
-import {useState, useContext, useEffect} from "react"
+import {useContext} from "react"
 import {Context} from "../store"
-import {updatePosts} from "../store/actions"
 import Navbar from "../components/Navbar"
 import PictureLoader from "../components/PictureLoader"
+import { useHistory } from "react-router-dom";
+import './Posts.css'
 
-let postData = []
-let i = 0
-const cache = {};
-
-function importAll(r) {
-    r.keys().forEach((key) => (cache[key] = r(key)));
-}
-importAll(require.context("../../image_uploads", false, /.(png|jpe?g|svg|gif)$/));
-
-const images = Object.entries(cache).map(module => module[1].default);
-
-let imageLoad = images.map(image => (
-    <img style={{width: 100,height: 100}} src={image} />
-))
 function Posts(){
-
-const [state, dispatch] = useContext(Context)
-const [isLoading, setIsLoading] = useState(true)
-
-  
-    useEffect(() =>{
-        postData = []
-    fetch('http://localhost:8081/api/post/').then(res => {
-
-        return res.json()
-
-    }).then( data => {
-
-        let m = data.length -1
-        
-        for (m; 0 <= m; m--) {
-            console.log(m)
-            if(state.auth.firstName===data[m].firstName){
-                postData.push({
-                    id: data[m]._id,
-                    image: imageLoad[m],
-                    text: data[m].text,
-                    firstName: data[m].firstName,
-                    lastName: data[m].lastName,
-                    createdAt: data[m].createdAt,
-                })
-            }
-        }
-        
-        dispatch(updatePosts(data))
-        setIsLoading(false)
+    const history = useHistory()
+    const [state] = useContext(Context)
     
-    })
+    const handler = () => {
+        //Redirect to another route
+        history.push("/postsAll") 
+    }
 
-    },[isLoading])
-
-    if(isLoading === true){
-        return(
-        <div>
-            <Navbar/>
-
-            Loading...
-        </div>)
+    if (!state.auth.token) {
+        handler();
     }
    
     return(

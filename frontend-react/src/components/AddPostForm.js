@@ -59,7 +59,8 @@ function AddPostForm(props){
                     filename: filenameVariable,
                     text: descpritiontext,
                     firstName: firstNameVariable,
-                    lastName: lastNameVariable
+                    lastName: lastNameVariable,
+                    likeAmount: 0,
                 };
                 onFinish(Post1);
             }else{
@@ -99,13 +100,13 @@ function AddPostForm(props){
     return(
         <div>
             <textarea id="Desc_input"  rows="2" cols="40" placeholder="Description"/>
-
             <div className="file-input">
                 <input type="file" id="file" className="file" onChange={handleFileInput}/>
+                <br/>
                 <label htmlFor="file">Select file</label>
             </div>
             <label id="fileLabel"></label>
-            <br></br>
+            <br/>
             <button className="uploadButton" onClick={handleClick}>Upload!</button>
         </div>
     )

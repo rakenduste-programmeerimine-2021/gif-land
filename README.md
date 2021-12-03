@@ -14,17 +14,34 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 ## Rakenduse funktsionaalne kirjeldus:
 * Sisse ja välja logimise funktsionaalsus
 * NavBari kaudu saab liikuda erinevate komponentide vahel
-* Gif-ide Üleslaadimise funktsionaalsus (Toimib kasutades lisa serverit, mida hetkel veel peab käsitsi käivitama)
+* Gif-ide Üleslaadimise funktsionaalsus (Toimib kasutades lisa serverit, mida hetkel peab käsitsi käivitama)
 * Gif-ide kuvamise funktsionaalsus(responsive disain)
-* Profiili - leht tulekul
+* Profiili leht endale
+* Teiste kasutajate Profiili leht
+* Postituse detailne vaade
+* News Feed kõigile kasutajatele
+* News Feed sisselogitud kasutajatele
 </br>
 
 ## Rakenduse kuvatõmmised
+* HomePage
 ![Source code](screenshots/Avaleht.png)
+* Login Page
 ![Source code](screenshots/Login.png)
+* Registration Page
 ![Source code](screenshots/Register.png)
+* Gif-Upload page
 ![Source code](screenshots/Gif_Upload.png)
-![Source code](screenshots/Postitused.png)
+* Post's for all users
+![Source code](screenshots/PostsAll.png)
+* Post's for logged in User
+![Source code](screenshots/Posts.png)
+* Post's Detailed View
+![Source code](screenshots/PostDetailedView.png)
+* My ProfilePage
+![Source code](screenshots/ProfilePage.png)
+* Other Person's profilePage
+![Source code](screenshots/OtherPersonsProfile.png)
 </br>
 
 

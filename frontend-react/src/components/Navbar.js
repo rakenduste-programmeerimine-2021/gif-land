@@ -27,7 +27,7 @@ function Navbar (){
         return (
             <div className="Navbar">
                 <div className="NavbarL">
-                <Link to ="/posts">
+                <Link to ="/postsAll">
                     <img className="logo" src="/Gif-Land.png" alt="Veebilehe logo"></img>
                 </Link>
                 </div>
@@ -53,9 +53,9 @@ function Navbar (){
                     <Button type="primary">Upload Post</Button>
                 </Link>
                 <Link to="/profilepage">
-                    <Button type="primary">ProfilePage</Button>
+                    <Button type="primary">Profile Page</Button>
                 </Link>
-                <Link to="/" onClick={() => myFunction(1)}>
+                <Link to="/postsAll" onClick={() => myFunction(1)}>
                     <Button type="primary">Log Out</Button>
                 </Link>
                 </div>
