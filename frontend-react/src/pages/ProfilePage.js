@@ -4,9 +4,9 @@ import {Context} from "../store"
 import {updatePosts} from "../store/actions"
 import Navbar from "../components/Navbar"
 import ProfilePictureLoader from "../components/ProfilePictureLoader"
+import './Posts.css'
 
 let postData = []
-let i = 0
 const cache = {};
 
 function importAll(r) {
@@ -17,7 +17,7 @@ importAll(require.context("../../image_uploads", false, /.(png|jpe?g|svg|gif)$/)
 const images = Object.entries(cache).map(module => module[1].default);
 
 let imageLoad = images.map(image => (
-    <img style={{width: 100,height: 100}} src={image} />
+    <img src={image}/>
 ))
 function ProfilePage(){
 
@@ -48,7 +48,7 @@ function ProfilePage(){
                 console.log(m)
                 if(state.auth.firstName===data[m].firstName){
                     postData.push({
-                        key: data[m]._id,
+                        id: data[m]._id,
                         image: imageLoad[m],
                         text: data[m].text,
                         firstName: data[m].firstName,
@@ -77,7 +77,7 @@ function ProfilePage(){
     return(
         <div>
             <Navbar/>
-            <h1>Tere Tulemast Profiililehele</h1>
+            <h1 id="tervitus">Your profile page</h1>
             <br />
             <ProfilePictureLoader />
         </div>

@@ -36,12 +36,13 @@ function AddPost() {
       <Navbar/>
       <div className="grid-container">
         <div className="grid-item1">
-          <h1 id="tervitus">Image Upload</h1>
+          <h3 id="tervitus">Image Upload</h3>
         </div>
         <div className="grid-item1">
           <AddPostForm onPictureUpload={itemSubmitHandler}/>
         </div>
-        <br></br>
+        <br/>
+        <br/>
         <div className="grid-item1">
           <span id="numbrike"></span>
         </div>

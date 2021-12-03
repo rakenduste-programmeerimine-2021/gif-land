@@ -7,7 +7,7 @@
   }
 
 .file-input label {
-    font-size: 100%;
+    font-size: 70%;
     padding: 7px;
     background: #0e6600;
     box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, 0.4);
@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 .uploadButton{
-    font-size: 100%;
+    font-size: 70%;
     background: #0e6600;
     box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, 0.4);
     color: #fff;
