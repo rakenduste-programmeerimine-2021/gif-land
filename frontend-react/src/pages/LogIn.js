@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
-import {UserAddOutlined} from '@ant-design/icons'
+import { UserAddOutlined } from '@ant-design/icons'
 import { useHistory } from "react-router-dom";
-import {useContext} from 'react';
-import {Context} from "../store";
+import { useContext } from 'react';
+import { Context } from "../store";
 import { loginUser } from "../store/actions";
 
 function LogIn(){

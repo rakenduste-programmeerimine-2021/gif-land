@@ -66,7 +66,7 @@ const [isLoading, setIsLoading] = useState(true)
     return(
         <div>
             <Navbar/>
-            <h1>New Gifs Feed</h1>
+            <h1 id="tervitus">New Gifs Feed</h1>
             <br />
             <PictureLoaderAll />
         </div>

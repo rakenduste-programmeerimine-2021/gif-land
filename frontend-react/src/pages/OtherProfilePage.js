@@ -1,8 +1,11 @@
 import { useHistory } from "react-router-dom";
-import {useState, useContext, useEffect} from "react"
-import {Context} from "../store"
-import {updatePosts} from "../store/actions"
+import { useState, useContext, useEffect } from "react"
+import { Context } from "../store"
+import { updatePosts } from "../store/actions"
 import Navbar from "../components/Navbar"
+import '../components/Pictures.css'
+import { LikeOutlined, ExpandOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
 
 let postData = []
 let i = 0
@@ -130,10 +133,10 @@ function OtherProfilePage(){
                 <b>Description:</b> {post.text}<br/>
                 <b>Posted at:</b> {post.createdAt}<br/>
                 <b>Upvote amount:</b> {post.likeAmount}</p>
-                <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
+                <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
                 <br/>
                 <br/>
-                <button onClick={()=>toPostDetailedHandler(post.key)}>To PostDetailedView</button>
+                <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>To Detailed view</Button>
             </div>)
 
             }
