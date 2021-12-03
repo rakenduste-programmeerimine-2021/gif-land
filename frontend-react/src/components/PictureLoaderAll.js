@@ -20,7 +20,7 @@ let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ))
 
-function PictureLoader(){
+function PictureLoaderAll(){
 
     const history = useHistory()
     const [state, dispatch] = useContext(Context)
@@ -75,24 +75,6 @@ function PictureLoader(){
         });
         setIsLoading(true)
     }
-
-    function toProfileHandler(firstName, lastName){
-
-        const handler = () => {
-            //Redirect to another route
-            history.push("/profilepage/"+firstName +"/"+ lastName) 
-        }
-        handler();
-    }
-    function toPostDetailedHandler(id){
-
-        const handler = () => {
-            //Redirect to another route
-            history.push("/posts/"+id) 
-        }
-        handler();
-    }
-    
         if(isLoading === true){
             return(
             <div>
@@ -112,16 +94,10 @@ function PictureLoader(){
             <b>Posted at:</b> {post.createdAt}<br/>
             <b>Upvote amount:</b> {post.likeAmount}</p>
             <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
-            <br/>
-            <br/>
-            <button onClick={()=>toProfileHandler(post.firstName, post.lastName)}>To ProfilePage</button>
-            <br/>
-            <br/>
-            <button onClick={()=>toPostDetailedHandler(post.key)}>To PostDetailedView</button>
             </div>)
             } 
             </div>
         )
     }
     
-    export default PictureLoader;
+    export default PictureLoaderAll;

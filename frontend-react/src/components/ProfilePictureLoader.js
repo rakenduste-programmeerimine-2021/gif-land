@@ -2,6 +2,9 @@ import {useState, useContext, useEffect} from "react"
 import {Context} from "../store"
 import {updatePosts} from "../store/actions"
 import './Pictures.css'
+import { Form, Input, Button } from 'antd'
+import { Link } from 'react-router-dom';
+
   
 let postData = []
 let i = 0
@@ -15,7 +18,7 @@ importAll(require.context("../../image_uploads", false, /.(png|jpe?g|svg|gif)$/)
 const images = Object.entries(cache).map(module => module[1].default)
 
 let imageLoad = images.map(image => (
-    <img style={{width:250, height:250}} src={image}/>
+    <img style={{width: 250,height: 250}} src={image}/>
 ))
 
 function ProfilePictureLoader(){
@@ -35,11 +38,12 @@ function ProfilePictureLoader(){
                 for (m; 0 <= m; m--) {
                     if(state.auth.firstName===data[m].firstName){
                         postData.push({
-                            id: data[m]._id,
+                            key: data[m]._id,
                             image: imageLoad[m],
                             text: data[m].text,
                             firstName: data[m].firstName,
                             lastName: data[m].lastName,
+                            likeAmount: data[m].likeAmount,
                             createdAt: data[m].createdAt,
                         })
                     }
@@ -51,6 +55,27 @@ function ProfilePictureLoader(){
             })
         
         },[isLoading])
+
+        function itemEditHandler(ID, Likes){
+            console.log(ID);
+            console.log(Likes);
+
+            let liida = Likes+1
+            const itemSubmitted={
+                id: ID,
+                likeAmount: liida
+
+            }
+            //console.log(itemSubmitted);
+            fetch('http://localhost:8081/api/post/update/' + ID.toString(), {
+                method: 'PUT',
+                body: JSON.stringify(itemSubmitted),
+                headers: {
+                    'Content-Type':'application/json'
+                }
+            });
+            setIsLoading(true)
+        }
     
         if(isLoading === true){
             return(
@@ -60,17 +85,21 @@ function ProfilePictureLoader(){
         }
 
         return(
-            <div className="profile-grid">
-            {
-            postData.map((post) => 
-            <div className={post.id}>
-            <p>
-            {post.image}<br/><br/>
-            <b>User:</b> {post.firstName +" "+ post.lastName}<br/>
-            <b>Description:</b> {post.text}<br/>
-            <b>Posted at:</b> {post.createdAt}</p>
-            </div>)
-            } 
+            <div className="post-grid">
+                {
+                postData.map((post) => 
+                <div className={post.key}>
+                    <p>
+                    {post.image}<br/><br/>
+                    <b>User:</b> {post.firstName +" "+ post.lastName}<br/>
+                    <b>Description:</b> {post.text}<br/>
+                    <b>Posted at:</b> {post.createdAt}<br/>
+                    <b>Upvote amount:</b> {post.likeAmount}</p>
+                    <button onClick={()=>itemEditHandler(post.key, post.likeAmount)}>Add UpVote</button>
+                </div>)
+
+                }
+
             </div>
         )
     }

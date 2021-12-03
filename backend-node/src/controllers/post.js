@@ -8,13 +8,14 @@ exports.getPosts = async (req, res) => {
 
 exports.createPost = async (req, res) => {
 
-    const {filename, text, firstName, lastName} = req.body;
+    const {filename, text, firstName, lastName, likeAmount} = req.body;
 
   const newPost = {
     filename,
     text,
     firstName,
-    lastName
+    lastName,
+    likeAmount
   }
 
   const createdPost = new Post(newPost)
