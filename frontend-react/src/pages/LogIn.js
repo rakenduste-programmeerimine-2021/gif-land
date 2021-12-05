@@ -21,7 +21,6 @@ function LogIn(){
     const [state, dispatch] = useContext(Context)
     console.log(state);
 
-
     function itemSubmitHandler(number, data){
         if(number === 1){
             document.getElementById("numbrike").innerHTML = "Õnnestus";
@@ -37,7 +36,7 @@ function LogIn(){
        
         <div class="grid-container">
             <div class="grid-item1">
-                <h1 id="tervitus">Logi Sisse</h1>
+                <h1 id="tervitus">Login</h1>
             </div>
             <LogInForm onLogInUser={itemSubmitHandler}/>
             <div class="grid-item">

@@ -113,6 +113,13 @@ function OtherProfilePage(){
             Loading...
         </div>)
     }
+    
+    if(postData.length < 1){
+        return(
+        <div>
+            <h1>This user hasn't added any posts yet...</h1>
+        </div>)
+    }
 
     if(item == null){
         return "Loading...";
@@ -121,8 +128,8 @@ function OtherProfilePage(){
     return(
         <div>
         <Navbar/>
-        <h1>Tere Tulemast {item[0]} {item[1]}i profiililehele</h1>
-        <br />
+        <h1>Welcome to the profile page of {item[0]} {item[1]}</h1>
+        <br/>
         <div className="post-grid">
             {
             postData.map((post) => 
@@ -136,11 +143,9 @@ function OtherProfilePage(){
                 <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
                 <br/>
                 <br/>
-                <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>To Detailed view</Button>
+                <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>Detailed view</Button>
             </div>)
-
             }
-
         </div>
         </div>
     )
