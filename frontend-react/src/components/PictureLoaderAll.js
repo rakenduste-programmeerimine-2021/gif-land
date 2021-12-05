@@ -5,7 +5,7 @@ import './Pictures.css'
 import { useHistory } from "react-router-dom"
 import { LikeOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
- 
+
 let postData = []
 const cache = {};
 
