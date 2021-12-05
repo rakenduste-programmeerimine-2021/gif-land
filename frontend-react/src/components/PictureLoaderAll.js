@@ -5,10 +5,8 @@ import './Pictures.css'
 import { useHistory } from "react-router-dom"
 import { LikeOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
-
-  
+ 
 let postData = []
-let i = 0
 const cache = {};
 
 function importAll(r) {
@@ -58,13 +56,11 @@ function PictureLoaderAll(){
     },[isLoading])
 
     function itemEditHandler(ID, Likes){
-        //console.log(ID);
-        //console.log(Likes);
 
-        let liida = Likes+1
+        let numberOfLikes = Likes + 1
         const itemSubmitted={
             id: ID,
-            likeAmount: liida
+            likeAmount: numberOfLikes
 
         }
         //console.log(itemSubmitted);
@@ -81,6 +77,13 @@ function PictureLoaderAll(){
             return(
             <div>
                 Loading...
+            </div>)
+        }
+
+        if(postData.length < 1){
+            return(
+            <div>
+                <h1>No posts added yet...</h1>
             </div>)
         }
 

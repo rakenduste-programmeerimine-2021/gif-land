@@ -4,8 +4,8 @@ import {updatePosts} from "../store/actions"
 import './Pictures.css'
 import { Button } from 'antd'
 import { LikeOutlined } from '@ant-design/icons'  
+
 let postData = []
-let i = 0
 const cache = {};
 
 function importAll(r) {
@@ -31,8 +31,7 @@ function ProfilePictureLoader(){
                 return res.json()
     
             }).then(data => {
-                let m =data.length - 1
-                
+                let m = data.length - 1
                 for (m; 0 <= m; m--) {
                     if(state.auth.firstName===data[m].firstName){
                         postData.push({
@@ -55,13 +54,11 @@ function ProfilePictureLoader(){
         },[isLoading])
 
         function itemEditHandler(ID, Likes){
-            console.log(ID);
-            console.log(Likes);
 
-            let liida = Likes+1
+            let numberOfLikes = Likes + 1
             const itemSubmitted={
                 id: ID,
-                likeAmount: liida
+                likeAmount: numberOfLikes
 
             }
             //console.log(itemSubmitted);
@@ -82,6 +79,13 @@ function ProfilePictureLoader(){
             </div>)
         }
 
+        if(postData.length < 1){
+            return(
+            <div>
+                <h1>No posts added yet...</h1>
+            </div>)
+        }
+
         return(
             <div className="post-grid">
                 {
@@ -95,9 +99,7 @@ function ProfilePictureLoader(){
                     <b>Upvote amount:</b> {post.likeAmount}</p>
                     <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
                 </div>)
-
                 }
-
             </div>
         )
     }

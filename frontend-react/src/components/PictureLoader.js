@@ -101,6 +101,13 @@ function PictureLoader(){
                 Loading...
             </div>)
         }
+        
+        if(postData.length < 1){
+            return(
+            <div>
+                <h1>No posts added yet...</h1>
+            </div>)
+        }
 
         return(
             <div className="post-grid">
@@ -113,13 +120,13 @@ function PictureLoader(){
             <b>Description:</b> {post.text}<br/>
             <b>Posted at:</b> {post.createdAt}<br/>
             <b>Upvote amount:</b> {post.likeAmount}</p>
-            <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add UpVote</Button>
+            <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
             <br/>
             <br/>
-            <Button type="default" onClick={()=>toProfileHandler(post.firstName, post.lastName)}><UserOutlined/>To profilepage of {post.firstName +" "+ post.lastName}</Button>
+            <Button type="default" onClick={()=>toProfileHandler(post.firstName, post.lastName)}><UserOutlined/>Profilepage of {post.firstName +" "+ post.lastName}</Button>
             <br/>
             <br/>
-            <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>To Detailed view</Button>
+            <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>Detailed view</Button>
             </div>)
             } 
             </div>
