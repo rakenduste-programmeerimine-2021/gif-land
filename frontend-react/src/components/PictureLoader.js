@@ -8,8 +8,9 @@ import { Button } from 'antd'
 import { UserOutlined, ExpandOutlined } from '@ant-design/icons'
   
 let postData = []
-let i = 0
+//let i = 0
 const cache = {};
+
 
 function importAll(r) {
     r.keys().forEach((key) => (cache[key] = r(key)));
@@ -133,4 +134,4 @@ function PictureLoader(){
         )
     }
     
-    export default PictureLoader;
+export default PictureLoader;

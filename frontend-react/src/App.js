@@ -14,11 +14,9 @@ import PostDetailedView from "./pages/PostDetailedView"
 function App() {
 
   return (
-
     <BrowserRouter>
       
       <Switch>
-
         <Route exact path="/" component={HomePage}/>
         <Route exact path="/postsAll" component={PostsAll}/>
         <Route exact path="/posts" component={Posts}/>

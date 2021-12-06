@@ -21,7 +21,7 @@ let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ));
 
-function OtherProfilePage(){
+function PostDetailedView(){
 
     const history = useHistory();
     const [item, setItem] = useState(null);
@@ -206,4 +206,4 @@ function OtherProfilePage(){
 
 }
 
-export default OtherProfilePage;
+export default PostDetailedView;

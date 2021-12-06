@@ -4,6 +4,9 @@ import {updatePosts} from "../store/actions"
 import './Pictures.css'
 import { Button } from 'antd'
 import { LikeOutlined } from '@ant-design/icons'  
+import { ExpandOutlined } from '@ant-design/icons'
+import { useHistory } from "react-router-dom";
+
 
 let postData = []
 const cache = {};
@@ -19,8 +22,10 @@ let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ))
 
+
 function ProfilePictureLoader(){
 
+    const history = useHistory()
     const [state, dispatch] = useContext(Context)
     const [isLoading, setIsLoading] = useState(true)
     
@@ -33,7 +38,7 @@ function ProfilePictureLoader(){
             }).then(data => {
                 let m = data.length - 1
                 for (m; 0 <= m; m--) {
-                    if(state.auth.firstName===data[m].firstName){
+                    if(state.auth.firstName===data[m].firstName && state.auth.lastName===data[m].lastName){
                         postData.push({
                             key: data[m]._id,
                             image: imageLoad[m],
@@ -71,6 +76,14 @@ function ProfilePictureLoader(){
             });
             setIsLoading(true)
         }
+        function toPostDetailedHandler(id){
+
+            const handler = () => {
+                //Redirect to another route
+                history.push("/posts/"+id) 
+            }
+            handler();
+        }
     
         if(isLoading === true){
             return(
@@ -98,6 +111,9 @@ function ProfilePictureLoader(){
                     <b>Posted at:</b> {post.createdAt}<br/>
                     <b>Upvote amount:</b> {post.likeAmount}</p>
                     <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
+                    <br/>
+                    <br/>
+                    <Button type="default" onClick={()=>toPostDetailedHandler(post.key)}><ExpandOutlined/>Detailed view</Button>
                 </div>)
                 }
             </div>
