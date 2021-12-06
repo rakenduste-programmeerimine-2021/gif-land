@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 3000
 const jwtAuth = require("./middleware/jwtAuth")
 require("dotenv").config()
 
-const itemRoutes = require('./routes/item');
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
@@ -31,7 +30,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/api/item', itemRoutes);
+
 app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/comment', commentRoutes);
