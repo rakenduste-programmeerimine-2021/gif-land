@@ -19,6 +19,7 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 * Profiili leht endale
 * Teiste kasutajate Profiili leht
 * Postituse detailne vaade
+* Postituse kommenteerimise võimalus
 * News Feed kõigile kasutajatele
 * News Feed sisselogitud kasutajatele
 </br>
@@ -37,11 +38,19 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 * Post's for logged in User
 ![Source code](screenshots/Posts.png)
 * Post's Detailed View
-![Source code](screenshots/PostDetailedView.png)
+![Source code](screenshots/Comment.png)
 * My ProfilePage
 ![Source code](screenshots/ProfilePage.png)
 * Other Person's profilePage
 ![Source code](screenshots/OtherPersonsProfile.png)
+</br>
+
+## Testid
+* Backendi testi käivitamiseks tuleb rakendus dockeris käivitada ning dockeri Command Lines öelda käsk npm test
+* FrontEndi testide jaoks on vaja kommenteerida failides PictureLoader, PictureLoaderAll, ProfilePictureLoader, OtherProfilePage, PostDetailedView välja piltide importimine ning see järel on võimalik öelda dockeri command lines npm test. (Lisame ka pildi illustreerimaks, mis osa tuleb välja kommenteerida, et rakenduse testimisel ei tekiks errorit)
+
+![Source code](screenshots/Test.png)
+
 </br>
 
 
