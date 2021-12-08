@@ -1,14 +1,13 @@
 import { useHistory } from "react-router-dom"
-import {useState, useContext, useEffect} from "react"
-import {Context} from "../store"
-import {updatePosts} from "../store/actions"
+import { useState, useContext, useEffect } from "react"
+import { Context } from "../store"
+import { updatePosts } from "../store/actions"
 import Navbar from "../components/Navbar"
-import { LikeOutlined } from '@ant-design/icons'
-import { UserOutlined } from '@ant-design/icons'
+import { LikeOutlined, UserOutlined, CommentOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 
 let postData = []
-let i = 0
+let commentData = []
 const cache = {};
 
 function importAll(r) {
@@ -20,14 +19,14 @@ const images = Object.entries(cache).map(module => module[1].default)
 
 let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
-))
+));
 
-function OtherProfilePage(){
+function PostDetailedView(){
 
-    const history = useHistory()
+    const history = useHistory();
     const [item, setItem] = useState(null);
-    const [state, dispatch] = useContext(Context)
-    const [isLoading, setIsLoading] = useState(true)
+    const [state, dispatch] = useContext(Context);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handler = () => {
         //Redirect to another route
@@ -67,19 +66,39 @@ function OtherProfilePage(){
             dispatch(updatePosts(data))
             setIsLoading(false)
         })
+        
+        commentData = []
+        fetch('http://localhost:8081/api/comment/').then(res => {
+
+            return res.json()
+
+        }).then(data => {
+
+            let m = data.length - 1
+            for (m; 0 <= m; m--) {
+                
+                if(data[m].postId===PostID){
+                    commentData.push({
+                        key: data[m]._id,
+                        postId: data[m].postId,
+                        commentUser: data[m].commentUser,
+                        comment: data[m].comment,
+                        createdAt: data[m].createdAt,
+                    })
+                }
+            }
+            
+        })
 
         setItem(PostID);
-    } ,[isLoading])
-
+    } ,[isLoading]);
 
     function itemEditHandler(ID, Likes){
-        console.log(ID);
-        console.log(Likes);
 
-        let liida = Likes+1
+        let numberOfLikes = Likes + 1
         const itemSubmitted={
             id: ID,
-            likeAmount: liida
+            likeAmount: numberOfLikes
 
         }
         //console.log(itemSubmitted);
@@ -92,6 +111,33 @@ function OtherProfilePage(){
         });
         setIsLoading(true)
     }
+    function itemCommentHandler(ID){
+
+        let commentText = document.getElementById("comment_input").value;
+
+        if(commentText.length < 1){
+            console.log("Error posting comment!")
+
+        }else{
+            const commentSubmitted={
+                postId: ID,
+                commentUser: state.auth.firstName +" "+ state.auth.lastName,
+                comment: commentText      
+            }
+
+        //console.log(itemSubmitted);
+        fetch('http://localhost:8081/api/comment/create/', {
+            method: 'POST',
+            body: JSON.stringify(commentSubmitted),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        });
+        setIsLoading(true)
+
+        }
+    }
+
     function toProfileHandler(firstName, lastName){
 
         const handler = () => {
@@ -114,33 +160,50 @@ function OtherProfilePage(){
 
     return(
         <div>
-        <Navbar/>
-        <br />
-        <div className="detailed-post-grid">
-            {
-            postData.map((post) => 
-            <div className={post.key}>
-                <p>
-                {post.image}<br/><br/>
-                <b>User:</b> {post.firstName +" "+ post.lastName}<br/>
-                <b>Description:</b> {post.text}<br/>
-                <b>Posted at:</b> {post.createdAt}<br/>
-                <b>Upvote amount:</b> {post.likeAmount}</p>
-                <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
-                <br/>
-                <br/>
-                <Button type="default" onClick={()=>toProfileHandler(post.firstName, post.lastName)}><UserOutlined/>Back to profile page</Button>
-            </div>)
-
-            }
-
-        </div>
+            <Navbar/>
+            <br />
+            <h1 id="tervitus">Detailed post view</h1>
+            <div className="detailed-post-grid">
+                {
+                postData.map((post) => 
+                <div className={post.key}>
+                    <p>
+                    {post.image}<br/><br/>
+                    <b>User:</b> {post.firstName +" "+ post.lastName}<br/>
+                    <b>Description:</b> {post.text}<br/>
+                    <b>Posted at:</b> {post.createdAt}<br/>
+                    <b>Upvote amount:</b> {post.likeAmount}</p>
+                    <Button type="default" onClick={()=>itemEditHandler(post.key, post.likeAmount)}><LikeOutlined/>Add Upvote</Button>
+                    <br/>
+                    <br/>
+                    <Button type="default" onClick={()=>toProfileHandler(post.firstName, post.lastName)}><UserOutlined/>Back to profile page</Button>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <textarea id="comment_input" rows="3" cols="40" placeholder="Add comment"/>
+                    <br/>
+                    <br/>
+                    <Button type="default" onClick={()=>itemCommentHandler(post.key)}><CommentOutlined/>Add comment</Button>
+                </div>)
+                }
+            </div>
+            <br/>
+            <h1>Comments:</h1>
+            <div className="comment-grid">
+                {
+                commentData.map((comment) => 
+                <div className={comment.key}>
+                    <p>
+                    <b>User:</b> {comment.commentUser}<br/>
+                    <b>Comment:</b> {comment.comment}<br/>
+                    <b>Posted at:</b> {comment.createdAt}<br/>
+                    </p>
+                </div>)
+                }
+            </div>
         </div>
     )
 
-
-
-
 }
 
-export default OtherProfilePage;
+export default PostDetailedView;

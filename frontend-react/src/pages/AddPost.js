@@ -6,7 +6,6 @@ import './AddPost.css'
 import { useHistory } from "react-router-dom";
 
 
-
 function AddPost() {
   const [state] = useContext(Context)
   console.log(state);

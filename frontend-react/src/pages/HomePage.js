@@ -10,24 +10,24 @@ import {LoginOutlined} from '@ant-design/icons'
 
 function HomePage(){
 
-    const [state] = useContext(Context)
-    console.log(state)
+    //const [state] = useContext(Context)
+    //console.log(state)
 
     return(
         <div>
-            <div class="grid-container">
-                <div class="grid-item1">
+            <div className="grid-container">
+                <div className="grid-item1">
                     <h1 id="tervitus">Welcome to Gif-Land</h1>
                 </div>
-                <div class="grid-item2">
+                <div className="grid-item2">
                     <img className="avalehelogoke" src="/Gif-file.png" alt="Logo"></img>
                 </div>
-                <div class="grid-item3">
+                <div className="grid-item3">
                     <Link to="/login">
                         <Button type="default" id="avalehenupp1"><LoginOutlined/>Login</Button>
                     </Link>
                 </div>
-                <div class="grid-item4">
+                <div className="grid-item4">
                     <Link to="/register">
                         <Button type="default" id="avalehenupp2"><UserAddOutlined/>Register</Button>
                     </Link>
@@ -37,4 +37,5 @@ function HomePage(){
         </div>
     )
 }
+
 export default HomePage

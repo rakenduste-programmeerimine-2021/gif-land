@@ -6,9 +6,7 @@ import { useHistory } from "react-router-dom"
 import { LikeOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 
-  
 let postData = []
-let i = 0
 const cache = {};
 
 function importAll(r) {
@@ -21,6 +19,7 @@ const images = Object.entries(cache).map(module => module[1].default)
 let imageLoad = images.map(image => (
     <img style={{width: 250,height: 250}} src={image}/>
 ))
+
 
 function PictureLoaderAll(){
 
@@ -58,13 +57,11 @@ function PictureLoaderAll(){
     },[isLoading])
 
     function itemEditHandler(ID, Likes){
-        //console.log(ID);
-        //console.log(Likes);
 
-        let liida = Likes+1
+        let numberOfLikes = Likes + 1
         const itemSubmitted={
             id: ID,
-            likeAmount: liida
+            likeAmount: numberOfLikes
 
         }
         //console.log(itemSubmitted);
@@ -81,6 +78,13 @@ function PictureLoaderAll(){
             return(
             <div>
                 Loading...
+            </div>)
+        }
+
+        if(postData.length < 1){
+            return(
+            <div>
+                <h1>No posts added yet...</h1>
             </div>)
         }
 

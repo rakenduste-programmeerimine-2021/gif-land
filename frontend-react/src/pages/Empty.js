@@ -5,12 +5,10 @@ import { useHistory } from "react-router-dom";
 
 function Empty(){
 
-
-    const [state, dispatch] = useContext(Context)
+    const [state] = useContext(Context)
 
     const history = useHistory()
     const handler = () => {
-      //Redirect to another route
       history.push("/posts") 
     }
     
@@ -19,11 +17,10 @@ function Empty(){
     }
 
     return(
-        // loon formi teisel js failis kus tekitame sisestusest json objetki
+        
         <div>
             <Navbar/>
             <div class="grid-container">
-
                 <h1 id="tervitus">Something went wrong</h1>
             </div>
         </div>
