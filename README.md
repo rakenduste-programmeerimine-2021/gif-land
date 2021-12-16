@@ -24,6 +24,12 @@ Kui arendus nende põhifunktsionaalsustega ilusti lõpuni jõuab, oleks järgmin
 * News Feed sisselogitud kasutajatele
 </br>
 
+## Rakenduse käivitamine:
+* CMD-ga liigud local-dev kausta ja kirjutad	docker-compose up -d
+* Selleks, et pildid salvestuksid tuleb CMD-ga liikuda front-endi kausta sealt oma korda server kausta ning seal anda käsk node app.js
+
+</br>
+
 ## Rakenduse kuvatõmmised
 * HomePage
 ![Source code](screenshots/Avaleht.png)
